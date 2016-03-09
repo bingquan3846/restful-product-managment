@@ -106,4 +106,8 @@ easy_admin:
                   - { property: 'poster' }
                   - { property: 'description'}
             list:
-                fields: ['name', 'image', 'poster', 'description']
+                fields:
+                  - { property: 'name' }
+                  - { property: 'image', type: 'image'  }
+                  - { property: 'poster' }
+                  - { property: 'description'}
