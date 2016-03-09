@@ -5,3 +5,11 @@ app:
 category:
     type: rest
     resource: AppBundle\Controller\DefaultController
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin

@@ -30,7 +30,6 @@ class DefaultController extends FOSRestController
     }
 
     public function categoryAction(){
-
         $stopwatch = new Stopwatch();
         $stopwatch->start('getAllCategories');
         $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();

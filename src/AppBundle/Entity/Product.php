@@ -7,17 +7,42 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Project
  *
- * @ORM\Table(name="project", indexes={@ORM\Index(name="IDX_2FB3D0EE12469DE2", columns={"category_id"})})
+ * @ORM\Table(name="product", indexes={@ORM\Index(name="IDX_2FB3D0EE12469DE2", columns={"category_id"})})
  * @ORM\Entity
  */
-class Project
+class Product
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
     /**
      * @var string
      *
      * @ORM\Column(name="poster", type="string", length=100, nullable=false)
      */
     private $poster;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=100, nullable=false)
+     */
+    private $image;
+
 
     /**
      * @var string
@@ -33,14 +58,6 @@ class Project
      */
     private $created;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
 
     /**
      * @var \AppBundle\Entity\Category
@@ -51,7 +68,6 @@ class Project
      * })
      */
     private $category;
-
 
 
     /**
@@ -158,5 +174,37 @@ class Project
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
