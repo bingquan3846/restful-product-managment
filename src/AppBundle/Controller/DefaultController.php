@@ -30,9 +30,7 @@ class DefaultController extends FOSRestController
         $stopwatch->start('getAllCategories');
         $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
         $stopwatch->lap('getAllCategories');
-        $view = $this->view($categories, 200)
-                ->setTemplate("AppBundle:category:category.html.twig")
-                ->setTemplateVar('categories');
+        $view = $this->view($categories);
         $event = $stopwatch->stop('getAllCategories');
 
         return $this->handleView($view);
