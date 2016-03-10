@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Project
@@ -46,6 +47,13 @@ class Product
 
     /**
      * @var string
+     * @ORM\Column(name="price", type="decimal", precision=20)
+     */
+    private $price;
+
+
+    /**
+     * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=false)
      */
@@ -58,6 +66,11 @@ class Product
      */
     private $created;
 
+    /**
+     * @var boolean
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    private $enabled;
 
     /**
      * @var \AppBundle\Entity\Category
@@ -127,8 +140,9 @@ class Product
      */
     public function setCreated($created)
     {
-        $this->created = $created;
-
+        $date = new \DateTime();
+        $date->setTimestamp(time());
+        $this->created = $date;
         return $this;
     }
 
@@ -139,6 +153,7 @@ class Product
      */
     public function getCreated()
     {
+
         return $this->created;
     }
 
@@ -206,5 +221,37 @@ class Product
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * @param string $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param boolean $enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }

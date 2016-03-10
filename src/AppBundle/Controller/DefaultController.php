@@ -18,18 +18,14 @@ class DefaultController extends FOSRestController
      */
     public function indexAction(Request $request)
     {
-        $category = new Category();
-        $category->setName('default category');
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($category);
-        $em->flush();
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }
 
-    public function categoryAction(){
+    public function categoryAction()
+    {
         $stopwatch = new Stopwatch();
         $stopwatch->start('getAllCategories');
         $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
@@ -38,7 +34,15 @@ class DefaultController extends FOSRestController
                 ->setTemplate("AppBundle:category:category.html.twig")
                 ->setTemplateVar('categories');
         $event = $stopwatch->stop('getAllCategories');
-        return $this->handleView($view);
 
+        return $this->handleView($view);
+    }
+
+    public function productAction()
+    {
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findBy( array('enabled' => 1));
+        $view = $this->view($products);
+
+        return $this->handleView($view);
     }
 }

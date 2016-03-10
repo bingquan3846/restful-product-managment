@@ -83,7 +83,7 @@ easy_admin:
         User:
             class: AppBundle\Entity\User
             edit:
-                fields: ['username', 'email', 'enabled', 'locked']
+                fields: ['username', 'email', 'enabled', 'locked', 'roles']
             new:
                 fields:
                   - { property: 'username' }
@@ -98,16 +98,22 @@ easy_admin:
         Product:
             class: AppBundle\Entity\Product
             edit:
-                fields: ['name', 'image', 'poster', 'description']
+                fields: ['name', 'image', 'price', 'description', 'category']
             new:
                 fields:
                   - { property: 'name' }
-                  - { property: 'image' }
-                  - { property: 'poster' }
+                  - { property: 'image'}
+                  - { property: 'price', type: 'money', type_options: { currency: 'EUR' } }
+                  - { property: 'enabled' }
                   - { property: 'description'}
+                  - { property: 'category' }
             list:
                 fields:
                   - { property: 'name' }
+                  - { property: 'price' }
                   - { property: 'image', type: 'image'  }
+                  - { property: 'enabled', type: 'toggle'  }
                   - { property: 'poster' }
                   - { property: 'description'}
+                  - { property: 'created', type_options: { date_widget: 'single_text' } }
+                  - { property: 'category'}
