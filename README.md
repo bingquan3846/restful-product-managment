@@ -3,6 +3,7 @@ Demo application based on symfony
 
 Restfull application, doctrine, twig .....
 
-Easy Admin component
+Components 
 -------
-User-Bundle component
+0 Easy Admin component
+0 User-Bundle component
