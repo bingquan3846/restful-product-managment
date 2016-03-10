@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Project
@@ -83,6 +82,12 @@ class Product
     private $category;
 
 
+    /**
+     * @var \AppBundle\Entity\Store
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Store")
+     * @ORM\JoinColumn(name="store_id", referencedColumnName="id")
+     */
+    private $store;
     /**
      * Set poster
      *
@@ -253,5 +258,21 @@ class Product
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Store $store
+     */
+    public function setStore($store)
+    {
+        $this->store = $store;
+    }
+
+    /**
+     * @return \AppBundle\Entity\Store
+     */
+    public function getStore()
+    {
+        return $this->store;
     }
 }
