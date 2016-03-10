@@ -5,7 +5,7 @@ Restfull application, doctrine, twig .....
 
 Components 
 -------
-* [. friendsofsymfony/user-bundle
-* [. javiereguiluz/easyadmin-bundle
-* [. symfony/stopwatch
-* [. friendsofsymfony/rest-bundle
+*  friendsofsymfony/user-bundle
+*  javiereguiluz/easyadmin-bundle
+*  symfony/stopwatch
+*  friendsofsymfony/rest-bundle
