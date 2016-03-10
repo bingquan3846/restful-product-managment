@@ -1,4 +1,4 @@
-Demo application based on symfony
+Product management  application based on symfony
 ====
 
 Restfull application, doctrine, twig .....
