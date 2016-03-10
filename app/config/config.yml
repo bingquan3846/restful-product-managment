@@ -95,10 +95,16 @@ easy_admin:
             class: AppBundle\Entity\Category
             list:
                 fields: ['name']
+        Store:
+            class: AppBundle\Entity\Store
+            list:
+                fields:
+                    - { property: 'name'}
+                    - { property: 'enabled', type: 'toggle'}
         Product:
             class: AppBundle\Entity\Product
             edit:
-                fields: ['name', 'image', 'price', 'description', 'category']
+                fields: ['name', 'image', 'price', 'description', 'category', 'store']
             new:
                 fields:
                   - { property: 'name' }
@@ -107,6 +113,7 @@ easy_admin:
                   - { property: 'enabled' }
                   - { property: 'description'}
                   - { property: 'category' }
+                  - { property: 'store' }
             list:
                 fields:
                   - { property: 'name' }
@@ -117,3 +124,4 @@ easy_admin:
                   - { property: 'description'}
                   - { property: 'created', type_options: { date_widget: 'single_text' } }
                   - { property: 'category'}
+                  - { property: 'store'}
