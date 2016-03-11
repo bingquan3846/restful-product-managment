@@ -46,7 +46,7 @@ class Product
 
     /**
      * @var string
-     * @ORM\Column(name="price", type="decimal", precision=20)
+     * @ORM\Column(name="price", type="decimal", precision=20, scale=2)
      */
     private $price;
 
