@@ -3,15 +3,13 @@
 namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Routing\ClassResourceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use FOS\RestBundle\View\View;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-use AppBundle\Entity\Category;
 
-class DefaultController extends FOSRestController
+class CategoryController extends FOSRestController implements  ClassResourceInterface
 {
     /**
      * @Route("/", name="homepage")
@@ -36,11 +34,14 @@ class DefaultController extends FOSRestController
         return $this->handleView($view);
     }
 
-    public function productAction()
+    public function getProductsAction($slug)
     {
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findBy( array('enabled' => 1));
+        $doctrine = $this->getDoctrine();
+        $category = $doctrine->getRepository('AppBundle:Category')->findOneBy(array('id' => $slug));
+        $products = $doctrine->getRepository('AppBundle:Product')->findBy( array('enabled' => 1, 'category' => $category), array('name' => 'asc'), 10);
         $view = $this->view($products);
 
         return $this->handleView($view);
     }
+
 }
